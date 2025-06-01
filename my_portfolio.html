@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prénom Nom - Portfolio Professionnel</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #e2e8f0;
+            background: linear-gradient(135deg, #1a202c 0%, #2d3748 50%, #1a202c 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: rgba(45, 55, 72, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 50px 40px;
+            text-align: center;
+            margin-bottom: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #4a5568, #718096);
+            margin: 0 auto 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            color: white;
+            font-weight: 600;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .profile-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        h1 {
+            color: #f7fafc;
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            color: #a0aec0;
+            font-size: 1.3em;
+            margin-bottom: 25px;
+            font-weight: 400;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
+
+        .contact-item {
+            color: #e2e8f0;
+            text-decoration: none;
+            padding: 12px 24px;
+            background: rgba(74, 85, 104, 0.6);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            font-weight: 500;
+        }
+
+        .contact-item:hover {
+            background: rgba(113, 128, 150, 0.8);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .section {
+            background: rgba(45, 55, 72, 0.7);
+            margin-bottom: 30px;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            animation: fadeInUp 0.8s ease-out;
+            transition: all 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
+        }
+
+        .section h2 {
+            color: #f7fafc;
+            margin-bottom: 30px;
+            font-size: 1.8em;
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(135deg, #4a5568, #718096);
+            border-radius: 2px;
+        }
+
+        .section p {
+            color: #cbd5e0;
+            font-size: 1.05em;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-category {
+            background: rgba(74, 85, 104, 0.5);
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            background: rgba(74, 85, 104, 0.7);
+            transform: translateY(-2px);
+        }
+
+        .skill-category h3 {
+            color: #f7fafc;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .skill-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            background: rgba(113, 128, 150, 0.6);
+            color: #f7fafc;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+        }
+
+        .project-card {
+            background: rgba(74, 85, 104, 0.4);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            background: rgba(74, 85, 104, 0.6);
+        }
+
+        .project-card h3 {
+            color: #f7fafc;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+            font-weight: 600;
+        }
+
+        .project-card p {
+            color: #cbd5e0;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            background: rgba(113, 128, 150, 0.8);
+            color: #f7fafc;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.85em;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .project-link {
+            display: inline-block;
+            background: rgba(113, 128, 150, 0.8);
+            color: #f7fafc;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .project-link:hover {
+            background: rgba(160, 174, 192, 0.9);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 35px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(135deg, #4a5568, #718096);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 35px;
+            padding: 25px;
+            background: rgba(74, 85, 104, 0.4);
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .timeline-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
+            background: rgba(74, 85, 104, 0.6);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -44px;
+            top: 30px;
+            width: 12px;
+            height: 12px;
+            background: linear-gradient(135deg, #4a5568, #718096);
+            border-radius: 50%;
+            border: 3px solid #2d3748;
+            box-shadow: 0 0 10px rgba(113, 128, 150, 0.3);
+        }
+
+        .timeline-date {
+            color: #a0aec0;
+            font-weight: 600;
+            font-size: 0.95em;
+            margin-bottom: 8px;
+        }
+
+        .timeline-title {
+            color: #f7fafc;
+            font-size: 1.25em;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .timeline-desc {
+            color: #cbd5e0;
+            line-height: 1.6;
+        }
+
+        .education-item {
+            background: rgba(74, 85, 104, 0.4);
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .education-item:hover {
+            background: rgba(74, 85, 104, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .education-item h3 {
+            color: #f7fafc;
+            font-size: 1.2em;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .education-item .institution {
+            color: #a0aec0;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .education-item .date {
+            color: #718096;
+            font-size: 0.9em;
+        }
+
+        footer {
+            background: rgba(45, 55, 72, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            margin-top: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        footer p {
+            color: #cbd5e0;
+            font-size: 1.1em;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            header, .section {
+                padding: 30px 25px;
+            }
+
+            h1 {
+                font-size: 2.2em;
+            }
+
+            .subtitle {
+                font-size: 1.1em;
+            }
+
+            .contact-info {
+                gap: 12px;
+            }
+
+            .contact-item {
+                padding: 10px 18px;
+                font-size: 0.9em;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline {
+                padding-left: 25px;
+            }
+        }
+
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: rgba(74, 85, 104, 0.3);
+            z-index: 1000;
+        }
+
+        .scroll-progress {
+            height: 100%;
+            background: linear-gradient(135deg, #4a5568, #718096);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="scroll-indicator">
+        <div class="scroll-progress" id="scrollProgress"></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <div class="profile-img">
+                <img src="Jean Kyllian Grondin.jpg" alt="Photo de Jean Kyllian Grondin">
+            </div>
+            <h1>Jean Kyllian Grondin</h1>
+            <p class="subtitle">Développeur Full-Stack | Étudiant en Informatique | Epitech</p>
+            <div class="contact-info">
+                <a class="contact-item">kyllian.grondin@epitech.eu</a>
+                <a href="https://linkedin.com/" class="contact-item">Linkedin</a>
+                <a href="https://github.com/prenomnom" class="contact-item">GitHub</a>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2>Profil Professionnel</h2>
+            <p> Étudiant en 1re année à Epitech, passionné par l’informatique et par les  technologies. Curieux et motivé, j’aime acquérir de
+                nouvelles compétences et
+                relever des défis techniques. Je
+                suis actuellement à la recherche
+                d’un stage pour développer mes
+                compétences en développement
+                logiciel et systèmes.
+            </p>
+            <p>Autonome, rigoureux et à l'écoute, je suis capable de m'adapter rapidement aux nouvelles technologies et de travailler efficacement en équipe pour atteindre les objectifs fixés.</p>
+        </section>
+
+        <section class="section">
+            <h2>Compétences Techniques</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Langages de Programmation</h3>
+                    <div class="skill-items">
+                        <span class="skill-tag">C</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Shell</span>
+                        <span class="skill-tag">Algorithmie</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Outils & Technologies</h3>
+                    <div class="skill-items">
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">Linux</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">Makefile</span>
+                        <span class="skill-tag">Systèmes Unix</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Systèmes d'Exploitation</h3>
+                    <div class="skill-items">
+                        <span class="skill-tag">Linux</span>
+                        <span class="skill-tag">Windows</span>
+                        <span class="skill-tag">Unix</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Méthodologies</h3>
+                    <div class="skill-items">
+                        <span class="skill-tag">Gestion de projet</span>
+                        <span class="skill-tag">Travail en autonomie</span>
+                        <span class="skill-tag">Programmation système</span>
+                        <span class="skill-tag">Résolution de problèmes</span>
+                        <span class="skill-tag">Communication</span>
+                    </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Projets Académiques & Personnels</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>Application de Gestion de Tâches</h3>
+                    <p>Développement d'une application web complète permettant de gérer des projets et tâches avec authentification utilisateur et interface responsive.</p>
+                    <div class="project-tags">
+                        <span class="tag">React</span>
+                        <span class="tag">Node.js</span>
+                        <span class="tag">MongoDB</span>
+                        <span class="tag">JWT</span>
+                    </div>
+                    <a href="#" class="project-link">Voir sur GitHub</a>
+                </div>
+
+                <div class="project-card">
+                    <h3>Site E-commerce (Projet étudiant)</h3>
+                    <p>Création d'un site de vente en ligne avec gestion des produits, panier d'achat et système de paiement simulé dans le cadre d'un projet de groupe.</p>
+                    <div class="project-tags">
+                        <span class="tag">PHP</span>
+                        <span class="tag">MySQL</span>
+                        <span class="tag">Bootstrap</span>
+                        <span class="tag">JavaScript</span>
+                    </div>
+                    <a href="#" class="project-link">Voir le projet</a>
+                </div>
+
+                <div class="project-card">
+                    <h3>Portfolio Personnel</h3>
+                    <p>Conception et développement de ce portfolio pour présenter mes compétences et projets, avec un design moderne et responsive.</p>
+                    <div class="project-tags">
+                        <span class="tag">HTML5</span>
+                        <span class="tag">CSS3</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">Responsive Design</span>
+                    </div>
+                    <a href="#" class="project-link">Code source</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Formation</h2>
+            <div class="education-item">
+                <h3>Master Informatique et Systèmes d'Information</h3>
+                <div class="institution">Université [Nom de votre université]</div>
+                <div class="date">2023 - 2025 (en cours)</div>
+            </div>
+
+            <div class="education-item">
+                <h3>Licence Informatique</h3>
+                <div class="institution">Université [Nom de votre université]</div>
+                <div class="date">2020 - 2023</div>
+            </div>
+
+            <div class="education-item">
+                <h3>Baccalauréat Scientifique</h3>
+                <div class="institution">Lycée [Nom du lycée]</div>
+                <div class="date">2020 - Mention Bien</div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Expérience Professionnelle</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">Été 2024</div>
+                    <div class="timeline-title">Stage Développeur Web - [Nom de l'entreprise]</div>
+                    <div class="timeline-desc">Développement de fonctionnalités frontend pour l'application interne de l'entreprise. Collaboration avec l'équipe de développement pour optimiser l'expérience utilisateur et corriger les bugs existants.</div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2023 - Présent</div>
+                    <div class="timeline-title">Freelance - Développement Web</div>
+                    <div class="timeline-desc">Création de sites web pour des petites entreprises locales. Gestion complète des projets de la conception à la mise en ligne, incluant le référencement de base et la formation des clients.</div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2022 - 2023</div>
+                    <div class="timeline-title">Assistant Technique - Service Informatique Université</div>
+                    <div class="timeline-desc">Support technique auprès des étudiants et professeurs. Maintenance du matériel informatique et assistance lors des cours en ligne pendant la période COVID.</div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>🚀 Prêt à contribuer à votre équipe et à relever de nouveaux défis ! 🚀</p>
+        </footer>
+    </div>
+
+    <script>
+        // Barre de progression du scroll
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset;
+            const docHeight = document.body.offsetHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            document.getElementById('scrollProgress').style.width = scrollPercent + '%';
+        });
+
+        // Animation au scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -30px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observer toutes les sections
+        document.querySelectorAll('.section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(15px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+
+        // Smooth scroll pour les animations
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const rate = scrolled * -0.3;
+            document.body.style.transform = `translateY(${rate * 0.1}px)`;
+        });
+    </script>
+</body>
+</html>
